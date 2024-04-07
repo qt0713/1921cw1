@@ -1,104 +1,112 @@
 #!/bin/bash
 
-# Test script for Maze Game
-
-# Function to run a test case
+# Function to run a test and check its result
 run_test() {
     echo "Running test: $1"
-    # Run your maze executable with appropriate arguments and input files
-    # Capture and verify the output
-    # Example:
-    # ./maze maze.txt 5 5 < input.txt > output.txt
-    # expected_output=$(cat expected_output.txt)
-    # actual_output=$(cat output.txt)
-    # if [ "$actual_output" = "$expected_output" ]; then
-    #     echo "Test passed: $1"
-    # else
-    #     echo "Test failed: $1"
-    # fi
+    if $2; then
+        echo "Test passed"
+    else
+        echo "Test failed"
+    fi
+    echo ""
 }
 
-# Test cases
-# Test case 1: Valid input - Test with a valid maze and input
-run_test "Valid input"
-# Test case 2: Invalid input - Test with invalid command line arguments
-run_test "Invalid command line arguments"
-# Test case 3: Edge case - Test with the smallest possible maze
-run_test "Smallest maze"
-# Test case 4: Wall collision - Test when the player moves into a wall
-run_test "Wall collision"
-# Test case 5: Out of bounds - Test when the player moves out of bounds
-run_test "Out of bounds"
-# Test case 6: Map view - Test when the player requests to view the map
-run_test "Map view"
-# Test case 7: Quit - Test when the player chooses to quit the game
-run_test "Quit"
-# Test case 8: Player wins - Test when the player successfully reaches the exit
-run_test "Player wins"
-# Test case 9: Player loses - Test when the player reaches a dead end
-run_test "Player loses"
-# Test case 10: Player navigation - Test when the player navigates through the maze
-run_test "Player navigation"
-# Test case 11: Performance - Test the performance of the game with a large maze
-run_test "Performance"
-# Test case 12: Stress test - Test the game's behavior under stress conditions
-run_test "Stress test"
-# Test case 13: Input validation - Test the game's response to invalid user input
-run_test "Input validation"
-# Test case 14: Memory usage - Test the game's memory usage
-run_test "Memory usage"
-# Test case 15: Compatibility - Test the game's compatibility with different environments
-run_test "Compatibility"
-# Test case 16: Error handling - Test the game's error handling capabilities
-run_test "Error handling"
-# Test case 17: Robustness - Test the game's robustness against unexpected inputs
-run_test "Robustness"
-# Test case 18: Boundary conditions - Test the game's behavior at boundary conditions
-run_test "Boundary conditions"
-# Test case 19: Interrupt handling - Test the game's response to interrupts
-run_test "Interrupt handling"
-# Test case 20: Multiplayer support - Test the game's support for multiplayer mode
-run_test "Multiplayer support"
-# Test case 21: Accessibility - Test the game's accessibility features
-run_test "Accessibility"
-# Test case 22: Localization - Test the game's localization capabilities
-run_test "Localization"
-# Test case 23: Performance under load - Test the game's performance under heavy load
-run_test "Performance under load"
-# Test case 24: Network connectivity - Test the game's network connectivity features
-run_test "Network connectivity"
-# Test case 25: Scalability - Test the game's scalability with increasing maze sizes
-run_test "Scalability"
-# Test case 26: Random maze generation - Test the game with randomly generated mazes
-run_test "Random maze generation"
-# Test case 27: Large maze - Test the game with a large maze
-run_test "Large maze"
-# Test case 28: Multi-level maze - Test the game with multi-level mazes
-run_test "Multi-level maze"
-# Test case 29: User interface - Test the game's user interface
-run_test "User interface"
-# Test case 30: Game mechanics - Test the game's mechanics and rules
-run_test "Game mechanics"
-# Test case 31: AI behavior - Test the behavior of AI-controlled players
-run_test "AI behavior"
-# Test case 32: Save and load - Test the game's ability to save and load progress
-run_test "Save and load"
-# Test case 33: Sound effects - Test the game's sound effects
-run_test "Sound effects"
-# Test case 34: Graphics quality - Test the game's graphics quality
-run_test "Graphics quality"
-# Test case 35: Accessibility options - Test the game's accessibility options
-run_test "Accessibility options"
-# Test case 36: Player customization - Test the game's player customization options
-run_test "Player customization"
-# Test case 37: Achievements - Test the game's achievement system
-run_test "Achievements"
-# Test case 38: Leaderboards - Test the game's leaderboard system
-run_test "Leaderboards"
-# Test case 39: Game updates - Test the game's ability to update itself
-run_test "Game updates"
-# Test case 40: Community features - Test the game's community features (e.g., forums, chat)
-run_test "Community features"
+# Test 1: Test with valid maze file
+echo "Test 1: Valid maze file"
+./maze maze_valid.txt 10 10
+# Add assertion for test result
 
-echo "All tests completed"
+# Test 2: Test with invalid maze file
+echo "Test 2: Invalid maze file"
+./maze maze_invalid.txt 10 10
+# Add assertion for test result
+
+# Test 3: Test minimum maze size
+echo "Test 3: Minimum maze size"
+./maze maze_min_size.txt 5 5
+# Add assertion for test result
+
+# Test 4: Test maximum maze size
+echo "Test 4: Maximum maze size"
+./maze maze_max_size.txt 100 100
+# Add assertion for test result
+
+# Test 5: Test maze height out of range
+echo "Test 5: Maze height out of range"
+./maze maze_height_out_of_range.txt 101 10
+# Add assertion for test result
+
+# Test 6: Test maze width out of range
+echo "Test 6: Maze width out of range"
+./maze maze_width_out_of_range.txt 10 101
+# Add assertion for test result
+
+# Test 7: Test moving up to empty space
+echo "Test 7: Moving up to empty space"
+./maze maze_empty.txt 10 10 < input_up.txt
+# Add assertion for test result
+
+# Test 8: Test moving down to empty space
+echo "Test 8: Moving down to empty space"
+./maze maze_empty.txt 10 10 < input_down.txt
+# Add assertion for test result
+
+# Test 9: Test moving left to empty space
+echo "Test 9: Moving left to empty space"
+./maze maze_empty.txt 10 10 < input_left.txt
+# Add assertion for test result
+
+# Test 10: Test moving right to empty space
+echo "Test 10: Moving right to empty space"
+./maze maze_empty.txt 10 10 < input_right.txt
+# Add assertion for test result
+
+# Test 11: Test moving up to wall
+echo "Test 11: Moving up to wall"
+./maze maze_wall.txt 10 10 < input_up.txt
+# Add assertion for test result
+
+# Test 12: Test moving left to wall
+echo "Test 12: Moving left to wall"
+./maze maze_wall.txt 10 10 < input_left.txt
+# Add assertion for test result
+
+# Test 13: Test moving down to edge
+echo "Test 13: Moving down to edge"
+./maze maze_edge.txt 10 10 < input_down.txt
+# Add assertion for test result
+
+# Test 14: Test moving right to edge
+echo "Test 14: Moving right to edge"
+./maze maze_edge.txt 10 10 < input_right.txt
+# Add assertion for test result
+
+# Test 15: Test viewing map
+echo "Test 15: Viewing map"
+./maze maze_valid.txt 10 10 < input_view_map.txt
+# Add assertion for test result
+
+# Test 16: Test viewing map and continue
+echo "Test 16: Viewing map and continue"
+./maze maze_valid.txt 10 10 < input_view_map_continue.txt
+# Add assertion for test result
+
+# Test 17: Test quitting game (upper case)
+echo "Test 17: Quitting game (upper case)"
+./maze maze_valid.txt 10 10 < input_quit_upper.txt
+# Add assertion for test result
+
+# Test 18: Test quitting game (lower case)
+echo "Test 18: Quitting game (lower case)"
+./maze maze_valid.txt 10 10 < input_quit_lower.txt
+# Add assertion for test result
+
+# Test 19: Test invalid input
+echo "Test 19: Invalid input"
+./maze maze_valid.txt 10 10 < input_invalid.txt
+# Add assertion for test result
+
+# Test 20: Test moving to map edge
+echo "Test 20: Moving to map edge"
+./maze maze_edge.txt 10 10 < input_edge.txt
 
